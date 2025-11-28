@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-result=""
+result = ""
 for i in range(ord('a'), ord('z') + 1):
-    result+=chr(i)
-print(result)
+    result += chr(i)
+print(f"{result}")
