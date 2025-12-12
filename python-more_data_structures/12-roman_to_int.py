@@ -1,7 +1,15 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    roman_nums = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    if not isinstance(roman_string, str) or roman_string is None:
+        return 0
+    
+    roman_vals = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
     result = 0
-    for i in roman_string:
-        result += roman_nums[i]
-    return result
+    prev = 0
+    for i in reversed(roman_string):
+        if roman_vals[i] >= prev:
+            result += roman_vals[i] 
+        else :
+            result -= roman_vals[i]
+        prev = roman_vals[i]
+    
