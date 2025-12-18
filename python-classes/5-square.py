@@ -11,6 +11,10 @@ class Square():
         """This function is constructor"""
         self.__size = size
 
+    def area(self):
+        "This function calculate area"
+        return self.__size**2
+
     @property
     def size(self):
         "This function return private size"
@@ -23,9 +27,12 @@ class Square():
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-     
+
         self.__size = value
 
-    def area(self):
-        "This function calculate area"
-        return self.__size**2
+    def my_print(self):
+        if self.__size == 0:
+            print("")
+        else:
+            for i in range(1, self.__size):
+                print("#"*self.__size)
