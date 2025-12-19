@@ -28,7 +28,6 @@ class Square():
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-
         self.__size = value
 
     @property
@@ -39,17 +38,19 @@ class Square():
     @position.setter
     def position(self, value):
         "This is position's setter function"
-        if not(isinstance(value, tuple) and len(self.__position)==2):
-            if not all(isinstance(element, int) or element < 0 for element in variable):
-                raise TypeError("position must be a tuple of 2 positive integers")
-        if value < 0:
-            raise ValueError("size must be >= 0")
+        if (not isinstance(value, tuple) or len(value) != 2
+            or not all(isinstance(i, int) and i < 0 for i in value)
+                or not all(i >= 0 for i in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
 
-        self.__size = value
+        self.__position = value
 
     def my_print(self):
         if self.__size == 0:
             print("")
-        else:
-            for i in range(0, self.__size):
-                print("#"*self.__size)
+
+        for _ in range(0, self.__size):
+            print(" "*self.__position[0] + "#"*self.__size)
+
+        for _ in range(self.__position[1]):
+            print()
