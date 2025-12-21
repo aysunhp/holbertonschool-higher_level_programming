@@ -52,7 +52,7 @@ class Rectangle:
 
         lines = []
         for i in range(self.__height):
-            lines.append(self.print_symbol*self.__width)
+            lines.append(str(self.print_symbol)*self.__width)
 
         return "\n".join(lines)
 
