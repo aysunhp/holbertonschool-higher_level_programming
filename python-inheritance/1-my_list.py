@@ -3,5 +3,6 @@
 
 
 class MyList(list):
+    """A subclass of list"""
     def print_sorted(self):
-        return self.list.sort()
+        print(sorted(self))
