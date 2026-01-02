@@ -1,0 +1,56 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+
+# area() should raise Exception
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+# Valid integer values
+>>> bg.integer_validator("width", 1)
+>>> bg.integer_validator("height", 10)
+
+# Missing arguments
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+# Non-integer types (must raise TypeError)
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+# Zero and negative values (must raise ValueError)
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
+
+>>> bg.integer_validator("age", -5)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
+
+# Boolean should NOT be accepted (bool is subclass of int)
+>>> bg.integer_validator("flag", True)
+Traceback (most recent call last):
+TypeError: flag must be an integer
+
+# String value (must raise TypeError)
+>>> bg.integer_validator("age", "4")
+Traceback (most recent call last):
+TypeError: age must be an integer
