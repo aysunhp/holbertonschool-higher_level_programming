@@ -17,13 +17,13 @@ class Bird():
         print("The bird is flying")
 
     def habitat(self):
-        print("The fish lives in sky")
+        print("The bird lives in sky")
 
 
 class FlyingFish(Fish, Bird):
     """This  class is inherited from Bird and Fish classes"""
     def fly(self):
-        print("The flying fish is soaring")
+        print("The flying fish is soaring!")
 
     def swim(self):
         print("The flying fish is swimming!")
