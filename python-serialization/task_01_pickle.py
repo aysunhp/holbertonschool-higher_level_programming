@@ -23,14 +23,15 @@ class CustomObject:
             with open(filename, "wb") as file:
                 pickle.dump(self, file)
         except (FileNotFoundError, pickle.PickleError, PermissionError, OSError):
-            raise None
+            return None
 
     @classmethod
     def deserialize(cls, filename):
         try:
-            obj = pickle.load(file)
-            if isinstance(obj, cls):
-                return obj
-            return None
+            with open(filename, "rb") as file:
+                obj = pickle.load(file)
+                if isinstance(obj, cls):
+                    return obj
+                return None
         except (FileNotFoundError, pickle.PickleError, PermissionError, EOFError, OSError):
-            raise None
+            return None
