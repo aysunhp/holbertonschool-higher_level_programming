@@ -22,7 +22,7 @@ class CustomObject:
         try:
             with open(filename, "wb") as file:
                 pickle.dump(self, file)
-        except (FileNotFoundError, PermissionError, OSError):
+        except (FileNotFoundError, pickle.PickleError, PermissionError, OSError):
             raise None
 
     @classmethod
@@ -30,5 +30,5 @@ class CustomObject:
         try:
             with open(filename, "rb") as file:
                 return pickle.load(file)
-        except (FileNotFoundError, PermissionError, OSError):
+        except (FileNotFoundError, pickle.PickleError, PermissionError, EOFError, OSError):
             raise None
