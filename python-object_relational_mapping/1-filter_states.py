@@ -22,9 +22,10 @@ if __name__ == "__main__":
     )
 
     cursor = db.cursor()
-    
+
     # select states starting with 'N' and order by id ascending
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;")
+    cursor.execute("""SELECT * FROM states WHERE name LIKE 'N%'
+    ORDER BY id ASC;""")
     rows = cursor.fetchall()
 
     for row in rows:
