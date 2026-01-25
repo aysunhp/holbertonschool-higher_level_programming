@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-List all State objects that contain the letter 'a' from the database hbtn_0e_6_usa
+List all State objects that
+contain the letter 'a' from the database hbtn_0e_6_usa
 """
 
 import sys
@@ -16,7 +17,8 @@ if __name__ == "__main__":
 
     # create engine
     engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(username, password, db_name),
+        "mysql+mysqldb://{}:{}@localhost/{}"
+        .format(username, password, db_name),
         pool_pre_ping=True
     )
 
@@ -25,7 +27,8 @@ if __name__ == "__main__":
     session = Session()
 
     # query all states where name contains 'a' (case-sensitive)
-    states = session.query(State).filter(State.name.like("%a%")).order_by(State.id).all()
+    states = session.query(State)
+    .filter(State.name.like("%a%")).order_by(State.id).all()
 
     # display results
     for state in states:
