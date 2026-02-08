@@ -48,8 +48,8 @@ def read_sqlite(file_path):
 # --- Flask Route ---
 @app.route('/products')
 def products():
-    source = request.args.get('source')
-    id_param = request.args.get('id')
+    source = request.args.get('source')  # json / csv / sql
+    id_param = request.args.get('id')  # optional
 
     # Yanlış source yoxlaması
     if source not in ['json', 'csv', 'sql']:

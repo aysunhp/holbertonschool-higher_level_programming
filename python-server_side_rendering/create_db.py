@@ -1,4 +1,3 @@
-# create_db.py
 import sqlite3
 
 def create_database():
@@ -15,8 +14,10 @@ def create_database():
         )
     ''')
 
+    # Əvvəlki məlumatı təmizlə (optional)
+    cursor.execute('DELETE FROM Products')
+
     # Məlumat əlavə et
-    cursor.execute('DELETE FROM Products')  # əvvəlki məlumatı təmizləmək üçün
     cursor.execute('''
         INSERT INTO Products (id, name, category, price)
         VALUES
@@ -26,7 +27,7 @@ def create_database():
 
     conn.commit()
     conn.close()
+    print("Database created and populated")
 
 if __name__ == '__main__':
     create_database()
-    print("Database created and populated.")
